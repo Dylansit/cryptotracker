@@ -26,8 +26,8 @@ class CurrencyType extends DataObject {
 		'Logo',
 		'TLA',
 		'AlternativeTLAs',
-		'currentPrice'
-		
+		'PricePerUnit'
+
 	);
 
 	private static $casting = array(
@@ -54,13 +54,13 @@ class CurrencyType extends DataObject {
 
 	/**
 	 * $1 currently buys how many of these coins
-	 * 
+	 *
 	 */
 	public function currentPrice() {
 		$prices = $this->Prices();
 		if($prices->count() > 0){
 			// die('prices'.$prices->count());
-			return Cash::make('USD', $prices->sort('Created DESC')->first()->Price);
+			return Cash::make('USD', 1/$this->PricePerUnit()->getAmount());
 		}
 		if (!Member::currentUser() || Member::currentUser()->ShowPricesInID == 0) {
 			return Cash::make('USD', 1);
@@ -71,15 +71,16 @@ class CurrencyType extends DataObject {
 
 	/**
 	 * How many $ is one of these coins
-	 * 
+	 *
 	 */
 	public function PricePerUnit() {
-		$price = $this->currentPrice();
-		if ($price->getAmount() == 0){
+		$prices = $this->Prices();
+		if ($prices->count() == 0){
 			return Cash::make('USD', 0);
 		}
-		return Cash::make('USD', 1/$price->getAmount());
-		
+		$price = $prices->sort('Created DESC')->first()->PriceUSD;
+		return Cash::make('USD', $price);
+
 	}
 
 	public function PriceDaysAgo($days = 1) {
@@ -89,7 +90,7 @@ class CurrencyType extends DataObject {
 			$allprices = $prices->filter('Created:LessThan', date('Y-m-d h:i:s', strtotime('-'.$hours.' hours')) )->sort('Created DESC');
 			// debug::show($allprices);
 			if($allprices->count()) {
-				return Cash::make('USD', $allprices->first()->Price);
+				return Cash::make('USD', $allprices->first()->PriceUSD);
 			}
 		}
 		return Cash::make('USD', 0);
@@ -99,7 +100,7 @@ class CurrencyType extends DataObject {
 		$price = $this->PriceDaysAgo($days);
 		if ($price->getAmount() == 0){
 			return Cash::make('USD', 0);
-		} 
+		}
 		return Cash::make('USD', 1/$price->getAmount());
 	}
 
@@ -110,7 +111,7 @@ class CurrencyType extends DataObject {
 		$percent = $pricePerUnit->getAmount() / $pricePerUnitAgo->getAmount() * 100 - 100;
 		return number_format((float)$percent, 1, '.', '');
 	}
-	
+
 	public function PercentageChangeNiceSince($days = 1) {
 		$percent = $this->PercentageChangeSince($days);
 		if($percent < 0) {
@@ -123,11 +124,11 @@ class CurrencyType extends DataObject {
 		$allprices = $this->Prices()->filter('Created:GreaterThan', date('Y-m-d h:i:s', strtotime('-'.$days.' days')) )->sort('Created ASC');
 		return $allprices;
 	}
-	
+
 	public static $btcMultiplier = false;
 	public $ActualValuePerUnitCached = false;
 	public function ActualValuePerUnit(){
-		
+
 		if($this->ActualValuePerUnitCached) return $this->ActualValuePerUnitCached;
 		if($this->TotalSupply == 0) return 0;
 

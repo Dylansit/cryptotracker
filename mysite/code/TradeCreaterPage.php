@@ -52,18 +52,18 @@ class TradeCreaterPage_Controller extends Page_Controller {
 
 				$('#CurrencyID select').change(function() {
 					UpdatePrice();
-				});	
+				});
 
 				$('#Cost input, #Amount input, #TotalCostBtc input, #TotalCostUsd input').keyup(function() {
 						UpdateCostings($(this));
-				});	
+				});
 
 				function UpdatePrice() {
 					if(!$('#Amount input').val()) {
 						$('#Amount input').val(1);
 					}
 
-					
+
 					if(!$('input[name="ID"]').val()) {
 
 						var currencyId = $('#CurrencyID select').val();
@@ -78,20 +78,20 @@ class TradeCreaterPage_Controller extends Page_Controller {
 						  UpdateCostings($('#Cost input'));
 
 						});
-						
+
 					}
 				}
 
 				function UpdateCostings(updated) {
 					var amount = $('input[name="Amount"]').val();
 					var btcconversion = $('input[name="BTCPrice"]').val();
-					
+
 					if (updated.attr('name') == 'Cost' || updated.attr('name') == 'Amount') {
 						var cost = $('input[name="Cost"]').val();
 						var totalcost = cost * btcconversion * amount;
 						$('input[name="TotalCostBtc"]').val(totalcost);
 						$('input[name="TotalCostUsd"]').val(totalcost*1/btcconversion);
-						
+
 					}
 					else if (updated.attr('name') == 'TotalCostBtc') {
 						 var totalBtc = $('input[name="TotalCostBtc"]').val();
@@ -137,7 +137,7 @@ js
 
 		// debug::show($currency);
 		// die(print_r(CurrencyType::get()->map('ID','Name'),true));
-		$currencyField = DropdownField::create('CurrencyID', 'Currency', CurrencyType::get()->filter('Crypto', 1)->sort('Name ASC')->map('ID', 'NameAndTLA'), $this->CurrencyID);
+		$currencyField = DropdownField::create('CurrencyID', 'Currency', CurrencyType::get()->sort('Name ASC')->map('ID', 'NameAndTLA'), $this->CurrencyID);
 		$fields->insertBefore('Amount', $currencyField);
 		$fields->fieldByName('Amount')->setTitle('Number of Coins you bought');
 
@@ -146,7 +146,7 @@ js
 		$fields->fieldByName('Date')
 			->setConfig('dateformat', 'dd-MM-yyyy')
 			->setConfig('showcalendar', true);
-			
+
 		$fields->fieldByName('Date')->Title = 'Date that you bought this currency';
 		$fields->fieldByName('Date')->setValue(date('Y-m-d'));
 		$actions = new FieldList(

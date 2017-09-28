@@ -23,7 +23,7 @@ class CurrencyPrice extends DataObject {
 	public static $default_sort = 'Created DESC';
 
 	public function InvertedPrice() {
-		return 1/$this->Price;
+		return 1/$this->PriceUSD;
 	}
 
 }
