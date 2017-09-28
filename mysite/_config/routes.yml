@@ -1,0 +1,12 @@
+---
+Name: BitcoinPortfolioRoutes
+After: framework/routes#coreroutes
+---
+Director:
+  rules:
+    'CurrencyAPI' : 'CurrencyAPI'
+    'PriceFetcher' : 'PriceFetcher'
+    'portfolio' : 'PortfolioController'
+    'currency' : 'CurrencyController'
+    'csv' : 'CsvExportController'
+    'CryptoStatsUpdater' : 'CryptoStatsUpdater'

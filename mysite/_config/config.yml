@@ -1,0 +1,38 @@
+---
+Name: mysite
+After:
+  - 'framework/*'
+  - 'cms/*'
+---
+# YAML configuration for SilverStripe
+# See http://doc.silverstripe.org/framework/en/topics/configuration
+# Caution: Indentation through two spaces, not tabs
+SSViewer:
+  theme: 'portfolio'
+
+Member:
+  default_sort: 'Created DESC'
+  extensions:
+    - MemberExtension
+
+SiteTree:
+  meta_generator: ''
+
+Email:
+  admin_email: user@site.com
+
+MemberProfilePage_Controller:
+  extensions:
+    - MemberProfilePage_ControllerExtension
+
+Currency:
+  extensions:
+    - CurrencyExtension
+
+Injector:
+  Money:
+    class: MoneyExtended
+
+SiteConfig:
+  extensions:
+    - SiteConfigExtension
