@@ -10,16 +10,11 @@ class PriceFetcher extends CliController {
   public function process() {
 		$apikey = Siteconfig::current_site_config()->ApiKey;
 		date_default_timezone_set('Pacific/Auckland');
+		RestfulService::set_default_curl_option( CURLOPT_SSL_VERIFYHOST, false );
+		RestfulService::set_default_curl_option( CURLOPT_SSL_VERIFYPEER, false );
 		$currencies = new RestfulService("https://www.worldcoinindex.com/apiservice/json?key=".$apikey, 1 );
-		// $currencies->httpHeader("Accept:application/json");
-
     $request = $currencies->request();
-
     $json = $request->getBody();
-		echo "https://www.worldcoinindex.com/apiservice/json?key=".$apikey;
-		print_r($request);
-
-		echo substr($json, 0, 100);
 		$prices = json_decode($json,true);
     // print_r($prices);
 
