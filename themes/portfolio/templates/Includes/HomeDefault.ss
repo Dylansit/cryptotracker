@@ -14,7 +14,7 @@ $Content
 		<% with GetCurrency('BTC') %>
 			<tr>
 				<td class="currency-logo">
-					$Logo 
+					$Logo
 					$Name ($TLA)
 				</td>
 				<td class="lg-text">$PricePerUnit.Nice</td>
@@ -25,7 +25,7 @@ $Content
 		<% with GetCurrency('ETH') %>
 			<tr>
 				<td class="currency-logo">
-					$Logo 
+					$Logo
 					$Name ($TLA)
 				</td>
 				<td class="lg-text">$PricePerUnit.Nice</td>
@@ -36,7 +36,7 @@ $Content
 		<% with GetCurrency('DASH') %>
 			<tr>
 				<td class="currency-logo">
-					$Logo 
+					$Logo
 					$Name ($TLA)
 				</td>
 				<td class="lg-text">$PricePerUnit.Nice</td>
@@ -47,7 +47,7 @@ $Content
 		<% with GetCurrency('XRP') %>
 			<tr>
 				<td class="currency-logo">
-					$Logo 
+					$Logo
 					$Name ($TLA)
 				</td>
 				<td class="lg-text">$PricePerUnit.Nice</td>
@@ -58,7 +58,7 @@ $Content
 		<% with GetCurrency('XMR') %>
 			<tr>
 				<td class="currency-logo">
-					$Logo 
+					$Logo
 					$Name ($TLA)
 				</td>
 				<td class="lg-text">$PricePerUnit.Nice</td>

@@ -37,6 +37,14 @@ class CurrencyType extends DataObject {
 		'PricePerUnitMyCurrency' => 'Money',
 	);
 
+	public function Logo() {
+		return '<img src="https://bravenewcoin.com/images/coins/'.$this->TLALower().'.png" />';
+	}
+
+	public function TLALower() {
+		return strtolower($this->TLA);
+	}
+
 	public function NameAndTLA() {
 		return $this->Name.' ('.$this->TLA.')';
 	}

@@ -33,13 +33,13 @@ class Page_Controller extends ContentController {
 		parent::init();
 		// You can include any CSS or JS required by your project here.
 		// See: http://doc.silverstripe.org/framework/en/reference/requirements
-		
+
 		Requirements::css($this->ThemeDir().'/css/font-awesome.min.css');
 		Requirements::css($this->ThemeDir().'/css/bootstrap.min.css');
 		Requirements::css($this->ThemeDir().'/css/typography.css');
 		Requirements::css($this->ThemeDir().'/css/form.css');
 		Requirements::css($this->ThemeDir().'/css/layout.css');
-		
+
 		Requirements::block(THIRDPARTY_DIR.'/jquery/jquery.js');
 		Requirements::javascript($this->ThemeDir().'/js/jquery-2.2.4.min.js');
 		Requirements::javascript('https://code.jquery.com/jquery-migrate-1.4.1.js');
@@ -49,58 +49,58 @@ class Page_Controller extends ContentController {
 
 		Requirements::customScript(<<<js
 
-			
 
-			$(document).ready(function() { 
-				$.tablesorter.addParser({ 
-			        // set a unique id 
-			        id: 'dollars', 
-			        is: function(s) { 
-			            // return false so this parser is not auto detected 
-			            return false; 
-			        }, 
-			        format: function(s) { 
-			            // format your data for normalization 
+
+			$(document).ready(function() {
+				$.tablesorter.addParser({
+			        // set a unique id
+			        id: 'dollars',
+			        is: function(s) {
+			            // return false so this parser is not auto detected
+			            return false;
+			        },
+			        format: function(s) {
+			            // format your data for normalization
 			            // console.log(s);
-			            return s.replace(",","").replace("$",""); 
+			            return s.replace(",","").replace("$","");
 			            // console.log("new:"+s);
 
-			        }, 
-			        // set type, either numeric or text 
-			        type: 'numeric' 
-			    }); 
+			        },
+			        // set type, either numeric or text
+			        type: 'numeric'
+			    });
 
-		        $("#raw-data").tablesorter({ 
-		            headers: { 
-		            	2: { 
-		                    sorter:'dollars' 
-		                }, 
-		                3: { 
-		                    sorter:'dollars' 
-		                }, 
-		                4: { 
-		                    sorter:'dollars' 
-		                }, 
-		                5: { 
-		                    sorter:'dollars' 
+		        $("#raw-data").tablesorter({
+		            headers: {
+		            	2: {
+		                    sorter:'dollars'
 		                },
-		                6: { 
-		                    sorter:'dollars' 
+		                3: {
+		                    sorter:'dollars'
 		                },
-		                7: { 
-		                    sorter:'dollars' 
-		                }  
-		            } 
-		        }); 
+		                4: {
+		                    sorter:'dollars'
+		                },
+		                5: {
+		                    sorter:'dollars'
+		                },
+		                6: {
+		                    sorter:'dollars'
+		                },
+		                7: {
+		                    sorter:'dollars'
+		                }
+		            }
+		        });
 
-		        $("#coin-value").tablesorter({ 
-			        // sort on the first column and third column, order asc 
+		        $("#coin-value").tablesorter({
+			        // sort on the first column and third column, order asc
 			        sortList: [[4,1]]
 			    });
 		    });
 js
-); 
-		
+);
+
 	}
 
 	public function LastPrice() {
@@ -117,7 +117,7 @@ js
 	}
 
 	public function GetAllCrypto() {
-		return CurrencyType::get()->filter('Crypto', 1);
+		return CurrencyType::get();
 	}
 
 	public function isLive() {
@@ -134,7 +134,7 @@ js
 
 		$uploadField->setCanAttachExisting(false); // Block access to SilverStripe assets library
         $uploadField->setCanPreviewFolder(false); // Don't show target filesystem folder on upload field
-        $uploadField->relationAutoSetting = false; 
+        $uploadField->relationAutoSetting = false;
         $uploadField->setAllowedExtensions(array('csv'));
 		$uploadField->setAllowedMaxFileNumber(1);
 		$uploadField->setFolderName('Member_'.Member::currentUserID());
