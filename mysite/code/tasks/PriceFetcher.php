@@ -9,6 +9,9 @@ class PriceFetcher extends CliController {
 
   public function process() {
 		$apikey = Siteconfig::current_site_config()->ApiKey;
+		if(!$apikey) {
+			die('No API key set, get one from https://www.worldcoinindex.com/apiservice');
+		}
 		date_default_timezone_set('Pacific/Auckland');
 		RestfulService::set_default_curl_option( CURLOPT_SSL_VERIFYHOST, false );
 		RestfulService::set_default_curl_option( CURLOPT_SSL_VERIFYPEER, false );

@@ -8,7 +8,7 @@ class SiteConfigExtension extends DataExtension {
 
     public function updateCMSFields(FieldList $fields) {
         $fields->addFieldToTab("Root.Main",
-            new TextField("ApiKey")
+            TextField::create("ApiKey")->setRightTitle('Get an API key from https://www.worldcoinindex.com/apiservice')
         );
     }
 }
