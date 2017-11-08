@@ -13,11 +13,13 @@ class CryptoTest extends FunctionalTest {
   }
 
 	public function testCryptoTradeProfit() {
-		//@TODO: Add a test that creates a profit making crypto trade and tests the profit and percentage
+		//@TODO: Add a test that creates a profit making crypto trade object
+		//and tests the profit and percentage
   }
 
 	public function testCryptoTradeLoss() {
-		//@TODO: Add a test that creates a loss making crypto trade and tests the loss and percentage
+		//@TODO: Add a test that creates a loss making crypto trade object
+		//and tests the loss and percentage
   }
 
 	public function testMemberCost() {
