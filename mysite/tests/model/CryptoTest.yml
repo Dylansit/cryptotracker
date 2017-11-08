@@ -1,0 +1,42 @@
+
+
+CurrencyPrice:
+  1:
+    PriceUSD: 7000
+  2:
+    PriceUSD: 1
+  3:
+    PriceUSD: 300
+
+CurrencyType:
+  BTC:
+    Name: "Bitcoin"
+    TLA: 'BTC'
+    Crypto: 1,
+    Prices: =>CurrencyPrice.1
+  USD:
+    Name: "US Dollar"
+    TLA: 'USD'
+    Crypto: 0,
+    Prices: =>CurrencyPrice.2
+  ETH:
+    Name: "Ethereum"
+    TLA: 'ETH'
+    Crypto: 1,
+    Prices: =>CurrencyPrice.3
+
+Member:
+  1:
+    ShowPricesIn: =>CurrencyType.USD
+
+CurrencyTrade:
+  1:
+    Currency: =>CurrencyType.BTC
+    Amount: 3
+    Cost: 1000
+    Member: =>Member.1
+  2:
+    Currency: =>CurrencyType.ETH
+    Amount: 20
+    Cost: 10
+    Member: =>Member.1
