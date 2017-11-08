@@ -18,6 +18,7 @@ _ss_environment.php
 /themes/simple/
 /memberprofiles/
 /facebook-login/
+/sqlite3/
 
 web.config
 install.php

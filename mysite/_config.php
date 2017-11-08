@@ -15,4 +15,11 @@ if(Director::isDev()) {
 	Config::inst()->update('FacebookControllerExtension', 'app_id', '441311279594004');
 	Config::inst()->update('FacebookControllerExtension', 'api_secret', '79ba23273591f94a8af6a7f64cc3845e');
 	SS_Log::add_writer(new SS_LogEmailWriter('coinfolioerror@robertclarkson.net'), SS_Log::ERR);
+	if(isset($_GET['db']) && ($db = $_GET['db'])) {
+		global $databaseConfig;
+		if($db == 'sqlite3') {
+		    $databaseConfig['type'] = 'SQLite3Database';
+		    $databaseConfig['path'] = ':memory:';
+		}
+	}
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "434453c2868805725f5db7a631518d53",
+    "content-hash": "b919490b3ed13dc6c72f28f09eb31b9b",
     "packages": [
         {
             "name": "composer/installers",
@@ -416,6 +416,48 @@
                 "siteconfig"
             ],
             "time": "2017-06-15T11:52:21+00:00"
+        },
+        {
+            "name": "silverstripe/sqlite3",
+            "version": "1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/silverstripe/silverstripe-sqlite3.git",
+                "reference": "65cd866f42320e4a7817729161d7b07d7a04638d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/silverstripe/silverstripe-sqlite3/zipball/65cd866f42320e4a7817729161d7b07d7a04638d",
+                "reference": "65cd866f42320e4a7817729161d7b07d7a04638d",
+                "shasum": ""
+            },
+            "require": {
+                "silverstripe/framework": "^3.2.0"
+            },
+            "type": "silverstripe-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.4.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Sean Harvey",
+                    "email": "sean@silverstripe.com"
+                },
+                {
+                    "name": "Ingo Schommer",
+                    "email": "ingo@silverstripe.com"
+                }
+            ],
+            "description": "Adds SQLite3 support to SilverStripe",
+            "keywords": [
+                "database",
+                "silverstripe",
+                "sqlite3"
+            ],
+            "time": "2015-10-15T22:16:30+00:00"
         }
     ],
     "packages-dev": [
