@@ -13,13 +13,61 @@ class CryptoTest extends FunctionalTest {
   }
 
 	public function testCryptoTradeProfit() {
-		//@TODO: Add a test that creates a profit making crypto trade object
-		//and tests the profit and percentage
+		//set up the currency trade object with cost and amount
+		$trade = new CurrencyTrade();
+		$trade->CurrencyID = $this->objFromFixture('CurrencyType', 'BTC')->ID;
+		$trade->Cost = 3000;
+		$trade->Amount = 3;
+
+		//calculate the profit that this trade has generated.
+		$profit = $trade->Profit()->getAmount();
+
+		//@TODO: Update the assert statement to make sure the profit
+		// is what you expect from the system
+		// (remember that the test data has the current price of a bitcoin at 7000)
+		$this->assertEquals(123, $profit);
   }
 
+	public function testCryptoTradeProfitPercent() {
+		$trade = new CurrencyTrade();
+		$trade->CurrencyID = $this->objFromFixture('CurrencyType', 'BTC')->ID;
+		$trade->Cost = 3000;
+		$trade->Amount = 3;
+
+		$profitpercent = $trade->ProfitPercent();
+
+		//@TODO: Update the assert statement to make sure the profit percentage
+		// is what you expect from the system
+		// (remember that the test data has the current price of a bitcoin at 7000)
+		$this->assertEquals(123, $profitpercent);
+	}
+
 	public function testCryptoTradeLoss() {
-		//@TODO: Add a test that creates a loss making crypto trade object
-		//and tests the loss and percentage
+		$trade = new CurrencyTrade();
+		$trade->CurrencyID = $this->objFromFixture('CurrencyType', 'BTC')->ID;
+		$trade->Cost = 10000;
+		$trade->Amount = 3;
+		$profit = $trade->Profit()->getAmount();
+		$profitpercent = $trade->ProfitPercent();
+
+		//@TODO: Update the assert statement to make sure the loss
+		// is what you expect from the system
+		// (remember that the test data has the current price of a bitcoin at 7000)
+		$this->assertEquals(123, $profit);
+		$this->assertEquals(123, $profitpercent);
+  }
+
+	public function testCryptoTradeLossPercent() {
+		$trade = new CurrencyTrade();
+		$trade->CurrencyID = $this->objFromFixture('CurrencyType', 'BTC')->ID;
+		$trade->Cost = 10000;
+		$trade->Amount = 3;
+		$profitpercent = $trade->ProfitPercent();
+
+		//@TODO: Update the assert statement to make sure the loss percentage
+		// is what you expect from the system
+		// (remember that the test data has the current price of a bitcoin at 7000)
+		$this->assertEquals(123, $profitpercent);
   }
 
 	public function testMemberCost() {
