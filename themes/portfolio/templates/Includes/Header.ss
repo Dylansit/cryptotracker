@@ -8,7 +8,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="$BaseHref">$SiteConfig.Title</a>
+          <a class="navbar-brand" href="$BaseHref" >$SiteConfig.Title</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
@@ -39,9 +39,9 @@
                 <a href="{$BaseHref}Security/login">
                   <i class="fa fa-sign-in" aria-hidden="true"></i> Login
                 </a>
-                <a href="$GetPage(MemberProfilePage).Link">
+              <!--  <a href="$GetPage(MemberProfilePage).Link">
                   <i class="fa fa-list-alt" aria-hidden="true"></i> Register
-                </a>
+                </a>-->
               <% else %>
                 <a href="Security/logout">Log out</a>
               <% end_if %>

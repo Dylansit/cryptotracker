@@ -1,4 +1,4 @@
-		
+
 <% if $Menu(2) %>
 	<aside class="col-xs-3">
 		<nav class="secondary">
@@ -24,17 +24,17 @@
 			<% if Member.CurrentUser %>
 			$AddEditTradeForm
 			<% else %>
-			<p>You must first register and login to add your trades</p> 
+			<p>You must first register and login to add your trades</p>
 			<p><a href="/Security/login">
         <i class="fa fa-sign-in" aria-hidden="true"></i> Regular Login
       </a>
       </p>
-      <p><a href="$FacebookLoginLink"><i class="fa fa-facebook-official" aria-hidden="true"></i> Facebook Login (quickest)</a>
+    <!--  <p><a href="$FacebookLoginLink"><i class="fa fa-facebook-official" aria-hidden="true"></i> Facebook Login (quickest)</a>
       </p>
       <p><a href="$GetPage(MemberProfilePage).Link">
         <i class="fa fa-list-alt" aria-hidden="true"></i> Email Registration (slowest)
       </a>
-      </p>
+      </p>-->
 
 			<% end_if %>
 			$CommentsForm
