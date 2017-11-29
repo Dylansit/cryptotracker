@@ -19,7 +19,7 @@ class CurrencyTrade extends DataObject {
 		'Currency.Name',
 		'Amount',
 		'Cost'
-		
+
 	);
 
 	private static $casting = array(
@@ -82,14 +82,14 @@ class CurrencyTrade extends DataObject {
 
 	public function TotalCost() {
 		$myCurrency = $this->getCurrentCurrency();
-		return Cash::make($myCurrency->TLA, 
-			$this->Amount * 
+		return Cash::make($myCurrency->TLA,
+			$this->Amount *
 			$this->CostMyCurrency()->getAmount());
 	}
 
 	public function CurrentValue() {
 		$myCurrency = $this->getCurrentCurrency();
-		return Cash::make($myCurrency->TLA, $this->Amount * $this->PricePerUnitMyCurrency()->getAmount());
+		return Cash::make($myCurrency->TLA, $this->Amount * $this->PricePerUnitMyCurrency()->getAmount() * 0.8);
 	}
 
 	public function ProfitPercent() {
@@ -109,7 +109,7 @@ class CurrencyTrade extends DataObject {
 	public function getCMSFields() {
 		$fields = parent::getCMSFields();
 		$fields->removeByName('CurrencyID');
-		
+
 		$currencyField = DropdownField::create('CurrencyID', 'Currency', CurrencyType::get()->map('ID', 'Name'), $this->CurrencyID);
 		$fields->insertBefore('Amount', $currencyField);
 
