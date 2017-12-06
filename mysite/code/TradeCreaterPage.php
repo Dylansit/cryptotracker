@@ -150,7 +150,7 @@ js
 		$fields->fieldByName('Date')->Title = 'Date that you bought this currency';
 		$fields->fieldByName('Date')->setValue(date('Y-m-d'));
 		$actions = new FieldList(
-			new FormAction('submit', 'Save')
+			new FormAction('submit', ' ')
 		);
 		$fields->push(HiddenField::create('BTCPrice', '', CurrencyType::get()->find('TLA', 'BTC')->currentPrice()));
 
@@ -220,8 +220,8 @@ js
 			$trade = CurrencyTrade::create();
 		}
 
-		if($data['Amount'] <= 0) {
-          $form->addErrorMessage('Amount', 'This must be a number greater than 0', 'bad');
+		if($data['Cost'] <= 0) {
+          $form->addErrorMessage('Cost', 'This must be a number greater than 0', 'bad');
 
           return $this->redirectBack();
       }
