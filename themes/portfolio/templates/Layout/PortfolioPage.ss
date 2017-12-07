@@ -73,8 +73,12 @@
 								<td>$Currency.PercentageChangeNiceSince(7)</td>
 								<td>$Currency.PercentageChangeNiceSince(30)</td>
 								<td>
-									<a class="btn btn-default btn-xs" href="add-trade/edit/$ID"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-									<a class="btn btn-danger btn-xs" href="add-trade/delete/$ID"><i class="fa fa-times" aria-hidden="true"></i></a>
+									<a class="btn btn-default btn-xs" href="add-trade/woops/$ID">
+										<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+									</a>
+									<a class="btn btn-danger btn-xs" href="add-trade/delete/$ID">
+										<i class="fa fa-times" aria-hidden="true"></i>
+									</a>
 								</td>
 							</tr>
 						<% end_loop %>
